@@ -3,9 +3,9 @@ import {
   Row,
   Col,
   Card,
-  Button,
+  Empty,
   Divider,
-  Pagination,
+  Tag,
   Image,
   Avatar,
   Input,
@@ -61,7 +61,7 @@ const Page = () => {
           <Card>
             <div style={{ fontSize: "20px" }}>Latest Chat</div>
             <div>
-              <Row style={{ padding: "12px 10px" }}>
+              <Row style={{ padding: "12px 10px 0 10px", backgroundColor: "#EAEAEA" }}>
                 <Col style={{ padding: "0 5px 0 0" }}>
                   <Avatar icon={<UserOutlined />} size={64} />
                 </Col>
@@ -76,8 +76,29 @@ const Page = () => {
                 </Col>
                 <Col offset={6} style={{ padding: "10px 0" }}>
                   <div style={{ fontSize: "12px" }}>9.00 AM</div>
-                  <div>
+                  <div style={{ textAlign: "center" }}>
                     <Badge count={2} />
+                  </div>
+                </Col>
+                <Divider />
+              </Row>
+              <Row style={{ padding: "12px 10px" }}>
+                <Col style={{ padding: "0 5px 0 0" }}>
+                  <Avatar icon={<UserOutlined />} size={64} />
+                </Col>
+                <Col>
+                  <div className="text-bold" style={{ fontSize: "20px" }}>
+                    Aulia Megha{" "}
+                    <span style={{ fontSize: "15px", color: "#828282" }}>
+                      Forum
+                    </span>
+                  </div>
+                  <div>Let me search it first.</div>
+                </Col>
+                <Col offset={6} style={{ padding: "10px 0" }}>
+                  <div style={{ fontSize: "12px" }}>11.00 AM</div>
+                  <div style={{ textAlign: "center" }}>
+                    <Badge count={5} />
                   </div>
                 </Col>
                 <Divider />
@@ -85,7 +106,12 @@ const Page = () => {
             </div>
           </Card>
         </Col>
-        <Col span={10}></Col>
+        <Col span={10}>
+          {" "}
+          <Card style={{ textAlign: "center" }}>
+            <img src={`${process.env.PUBLIC_URL}/assets/chat.png`} style={{maxHeight: "75vh"}}/>
+          </Card>
+        </Col>
         <Col span={8}>
           <div style={{ textAlign: "center" }}>
             <Image
@@ -96,9 +122,31 @@ const Page = () => {
             <div className="text-bold" style={{ fontSize: "36px" }}>
               Brody Gans
             </div>
-            <div className="text-bold" style={{ fontSize: "36px" }}>
-              <span  style={{ fontSize: "18px" }}>Germany</span> <Divider type="vertical"/> <span  style={{ fontSize: "20px" }}>Software Engineer</span>
+            <div style={{ fontSize: "36px" }}>
+              <span style={{ fontSize: "18px" }}>Germany</span>{" "}
+              <Divider type="vertical" />{" "}
+              <span style={{ fontSize: "20px" }}>Software Engineer</span>
             </div>
+            <Card style={{ textAlign: "left", margin: "3vh 2vw" }}>
+              <div style={{ color: "grey" }}>Bio</div>
+              <div>Available on 9.00 am until 4.00 pm .</div>
+            </Card>
+            <Card style={{ textAlign: "left", margin: "3vh 2vw" }}>
+              <div style={{ color: "grey" }}>Area of Expertises</div>
+              <div>
+                {" "}
+                <Tag>Web Development</Tag> <Tag>Mobile Development</Tag>
+                <Tag>Software Engineering</Tag>
+              </div>
+            </Card>
+            <Card style={{ textAlign: "left", margin: "3vh 2vw" }}>
+              <div style={{ color: "grey" }}>Skills</div>
+              <div>
+                {" "}
+                <Tag>React JS</Tag> <Tag>Laravel</Tag>
+                <Tag>Flutter</Tag>
+              </div>
+            </Card>
           </div>
         </Col>
       </Row>
