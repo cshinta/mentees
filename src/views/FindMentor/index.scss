@@ -1,0 +1,29 @@
+@import "../../Constant.scss";
+
+  $list1: $buttonBlue, $buttonRed;
+
+#find-mentor{
+    .card-detail-profile{
+        border-color: blue;
+        padding: 3vh 0;
+        z-index: 1;
+    }
+    .button-mentor{
+        height: 100px;
+        margin: 0 10px;
+    }
+    .button-accept-mentor{
+        height: 120px;
+    }
+    .gradient-color{
+        color: $buttonBlue;
+        font-size: 40px;
+    }
+    .card-button-accept{
+        z-index: 2;
+    }
+
+    .ant-collapse > .ant-collapse-item > .ant-collapse-header .ant-collapse-arrow {
+        font-size: 23px;
+    }
+}

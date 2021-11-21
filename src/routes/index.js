@@ -5,6 +5,7 @@ import Login from "../views/Login";
 import Register from "../views/Register";
 import MentorRegister from "../views/Register/mentor/index.js";
 import MenteeRegister from "../views/Register/mentee/index.js";
+import FindMentor from "../views/FindMentor";
 
 const Router = () => {
     return (
@@ -14,6 +15,7 @@ const Router = () => {
         <Route path="/register" element={<Register/>} />
         <Route path="/register/mentor" element={<MentorRegister/>} />
         <Route path="/register/mentee" element={<MenteeRegister/>} />
+        <Route path="/mentee/find-mentor" element={<FindMentor/>} />
       </Routes>
     );
   };
