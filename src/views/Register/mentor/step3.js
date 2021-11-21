@@ -1,12 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Row, Col, Form, Button, Input, Select } from "antd";
-import { PlusOutlined, MinusCircleOutlined } from "@ant-design/icons";
-import { useNavigate } from "react-router-dom";
 
-const Page = (props) => {
+const Page = ({ onNext, onBack, setForm, form }) => {
+  const handleFinish = (values) => {
+    setForm((form) => ({
+      ...form,
+      email: values.email,
+      password: values.password,
+      username: values.username,
+    }));
+
+    onNext();
+  };
+
   return (
     <div id="mentor-registration-3" style={{ padding: "5vh 8vw" }}>
-      <Form layout="vertical" wrapperCol={{ span: 24 }}>
+      <Form layout="vertical" wrapperCol={{ span: 24 }} onFinish={handleFinish}>
         <Row gutter={24}>
           <Col span={24}>
             <Form.Item
@@ -36,7 +45,7 @@ const Page = (props) => {
                 { required: true, message: "Please input your password!" },
               ]}
             >
-              <Input size="large" placeholder="Enter your password" />
+              <Input.Password size="large" placeholder="Enter your password" />
             </Form.Item>
           </Col>
           <Col span={12}>
@@ -65,10 +74,10 @@ const Page = (props) => {
               dependencies={["password"]}
               hasFeedback
             >
-                <Input.Password size="large" placeholder="Enter your password" />
+              <Input.Password size="large" placeholder="Enter your password" />
             </Form.Item>
           </Col>
-          <Col offset={6} span={6} onClick={props.onBack}>
+          <Col offset={6} span={6} onClick={onBack}>
             <Button size="large">
               <span>Back</span>
             </Button>
@@ -79,7 +88,7 @@ const Page = (props) => {
                 span: 12,
               }}
             >
-              <Button size="large" className="btn-primary" onClick={props.onNext} htmlType="submit">
+              <Button size="large" className="btn-primary" htmlType="submit">
                 <span>Next</span>
               </Button>
             </Form.Item>

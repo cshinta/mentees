@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import {
   Row,
   Col,
@@ -10,14 +10,27 @@ import {
   Select,
 } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
-import { useNavigate } from "react-router-dom";
 
-const Page = (props) => {
+const Page = ({ onNext, setForm, form }) => {
+  const onFinish = (values) => {
+    setForm((form) => ({
+      ...form,
+      ...values,
+    }));
+
+    onNext();
+  };
+
   return (
     <div id="mentor-registration-1" style={{ padding: "0 8vw" }}>
-      <Form layout="vertical" wrapperCol={{ span: 24 }}>
+      <Form
+        layout="vertical"
+        wrapperCol={{ span: 24 }}
+        onFinish={onFinish}
+        initialValues={form}
+      >
         <Row gutter={24}>
-          <Col span={24} style={{textAlign: "center"}}>
+          <Col span={24} style={{ textAlign: "center" }}>
             <Form.Item name="upload" valuePropName="fileList">
               <Upload
                 name="avatar"
@@ -36,7 +49,7 @@ const Page = (props) => {
               label={
                 <span className="text-bold text-secondary">First Name</span>
               }
-              name="firstname"
+              name="first_name"
               rules={[
                 { required: true, message: "Please input your first name!" },
               ]}
@@ -49,7 +62,7 @@ const Page = (props) => {
               label={
                 <span className="text-bold text-secondary">Last Name</span>
               }
-              name="lastname"
+              name="last_name"
               rules={[
                 { required: true, message: "Please input your last name!" },
               ]}
@@ -59,10 +72,10 @@ const Page = (props) => {
           </Col>
           <Col span={12}>
             <Form.Item
+              name="birth_date"
               label={
                 <span className="text-bold text-secondary">Date of Birth</span>
               }
-              name="birthdate"
               rules={[
                 { required: true, message: "Please input your date of birth!" },
               ]}
@@ -71,7 +84,12 @@ const Page = (props) => {
               }}
             >
               <div className="customDatePicker">
-                <DatePicker size="large" />
+                <DatePicker
+                  size="large"
+                  style={{
+                    width: "100%",
+                  }}
+                />
               </div>
             </Form.Item>
           </Col>
@@ -82,9 +100,9 @@ const Page = (props) => {
               rules={[{ required: true, message: "Please input your gender!" }]}
             >
               <Select placeholder="Choose your gender" allowClear size="large">
-                <Select.Option value="male">Male</Select.Option>
-                <Select.Option value="female">Female</Select.Option>
-                <Select.Option value="other">
+                <Select.Option value="Male">Male</Select.Option>
+                <Select.Option value="Female">Female</Select.Option>
+                <Select.Option value="Others">
                   Prefer not to disclose
                 </Select.Option>
               </Select>
@@ -105,14 +123,18 @@ const Page = (props) => {
                 allowClear
                 size="large"
               >
-                <Select.Option value="indonesia">Indonesia</Select.Option>
-                <Select.Option value="other">Not Indonesia</Select.Option>
+                <Select.Option value="Indonesian Citizen">
+                  Indonesian Citizen
+                </Select.Option>
+                <Select.Option value="Non Indonesia Citizen">
+                  Non Indonesia Citizen
+                </Select.Option>
               </Select>
             </Form.Item>
           </Col>
           <Col span={24}>
             <Form.Item
-              name="study"
+              name="current_study"
               label={
                 <span className="text-bold text-secondary">
                   Current Level of Study
@@ -130,14 +152,16 @@ const Page = (props) => {
                 allowClear
                 size="large"
               >
-                <Select.Option value="college">College</Select.Option>
-                <Select.Option value="sma">High School</Select.Option>
+                <Select.Option value="High School">High School</Select.Option>
+                <Select.Option value="Bachelor">Bachelor Degree</Select.Option>
+                <Select.Option value="Master">Master Degree</Select.Option>
+                <Select.Option value="Doctorate">Doctorate Degree</Select.Option>
               </Select>
             </Form.Item>
           </Col>
           <Col span={24}>
             <Form.Item
-              name="school"
+              name="university"
               label={
                 <span className="text-bold text-secondary">
                   School/University/Company
@@ -159,7 +183,7 @@ const Page = (props) => {
           </Col>
           <Col span={24}>
             <Form.Item
-              name="position"
+              name="major"
               label={
                 <span className="text-bold text-secondary">
                   Major/Job Position
@@ -177,7 +201,7 @@ const Page = (props) => {
           </Col>
           <Col span={24}>
             <Form.Item
-              name="biodata"
+              name="bio"
               label={<span className="text-bold text-secondary">Bio</span>}
               rules={[
                 {
@@ -196,7 +220,7 @@ const Page = (props) => {
                 offset: 12,
               }}
             >
-              <Button size="large" className="btn-primary" htmlType="submit" onClick={props.onNext}>
+              <Button size="large" className="btn-primary" htmlType="submit" onClick={onNext}>
                 <span style={{ textAlign: "center", width: "100%" }}>Next</span>
               </Button>
             </Form.Item>

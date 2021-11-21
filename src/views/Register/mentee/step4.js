@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Row, Col, Button, Card, Avatar, Divider, Tag, Upload } from "antd";
 import { AntDesignOutlined } from "@ant-design/icons";
-import { useNavigate } from "react-router-dom";
 
-const Page = ({ onNext, onBack, setForm, form }) => {
+const Page = ({ onNext, onBack, form }) => {
   const fileList = [
     {
       uid: "-1",
