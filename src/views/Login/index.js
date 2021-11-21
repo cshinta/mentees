@@ -18,7 +18,12 @@ const Page = () => {
 
         localStorage.setItem("token", response.token);
         localStorage.setItem("username", response.user.username);
-        // navigate("/home")
+
+        if (response.user.role === "Mentee") {
+          navigate("/mentee/find-mentor");
+        } else {
+          navigate("/mentor/mentee-request");
+        }
       } else {
         message.error("Something wrong happened");
         console.log(data.errorStack);
@@ -117,9 +122,13 @@ const Page = () => {
                 <br />
                 <span className="text-secondary">
                   Don't have an account yet?{" "}
-                  <span onClick={() => {
-                    navigate("/register")
-                  }}>Register</span>
+                  <span
+                    onClick={() => {
+                      navigate("/register");
+                    }}
+                  >
+                    Register
+                  </span>
                 </span>
               </Form.Item>
             </Form>
