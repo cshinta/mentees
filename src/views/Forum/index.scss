@@ -1,0 +1,26 @@
+@import "../../Constant.scss";
+
+#forum{
+    #search {
+        .ant-btn{
+            min-height: 40px;
+            border-color: #d9d9d9;
+        }
+    }
+
+    @mixin gradient($direction, $list) {
+        background: -webkit-linear-gradient($direction, $list);
+        background: -moz-linear-gradient($direction, $list);
+        background: -o-linear-gradient($direction, $list);
+        background: linear-gradient($direction, $list);
+      }
+      
+      $list1: $buttonBlue, $buttonRed;
+
+    .recommended-card{
+        @include gradient(to left, $list1);
+        border-radius: 15px;
+        overflow-x: auto;
+    }
+    
+}
