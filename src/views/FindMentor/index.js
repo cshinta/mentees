@@ -87,7 +87,7 @@ const Page = () => {
               <Col
                 span={24}
                 className="card-button-accept"
-                style={{ textAlign: "center", padding: "10px 0" }}
+                style={{ textAlign: "center", padding: "10px" }}
               >
                 <Button className="button-mentor">
                   <UndoOutlined className="gradient-color" />
@@ -120,7 +120,7 @@ const Page = () => {
             </span>
             <span style={{ fontSize: "32px" }}>List</span>
           </Card>
-          <Card style={{borderRadius: "10px"}}>
+          <Card style={{ borderRadius: "10px" }}>
             <Collapse
               defaultActiveKey={["1", "2"]}
               ghost
@@ -150,6 +150,7 @@ const Page = () => {
                       <Button className="btn-primary">Chat</Button>
                     </Col>
                   </Row>
+
                   {/* for mentor page in mentee request
                   <Row>
                     <Col style={{ padding: "0 10px" }}>
@@ -164,6 +165,10 @@ const Page = () => {
                       <Button className="btn-primary">Accept</Button>
                     </Col>
                   </Row> */}
+                </div>
+                <div style={{ textAlign: "center" }}>
+                  {" "}
+                  <Button style={{ borderColor: "#fff" }}>Load More</Button>
                 </div>
               </Panel>
               <Panel
@@ -187,9 +192,13 @@ const Page = () => {
                       <div>Germany</div>
                     </Col>
                     <Col offset={6}>
-                      <Button style={{borderColor: "#fff"}}>Cancel</Button>
+                      <Button style={{ borderColor: "#fff" }}>Cancel</Button>
                     </Col>
                   </Row>
+                </div>
+                <div style={{ textAlign: "center" }}>
+                  {" "}
+                  <Button style={{ borderColor: "#fff" }}>Load More</Button>
                 </div>
               </Panel>
             </Collapse>
