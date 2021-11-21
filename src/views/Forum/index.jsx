@@ -44,7 +44,7 @@ const Page = () => {
               </Col>
               <Col span={22}>
                 <TextArea
-                  placeholder="What do you want to ask, Brody?"
+                  placeholder="What do you want to ask, Mia?"
                   autoSize
                   bordered={false}
                   style={{ fontSize: "20px" }}
@@ -167,7 +167,7 @@ const Page = () => {
                     </Col>
                     <Col>
                       <div className="text-bold" style={{ fontSize: "20px" }}>
-                        Brody Gans
+                        Mia
                       </div>
                       <div style={{ fontSize: "12px" }}>2 hours ago</div>
                     </Col>

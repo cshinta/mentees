@@ -54,16 +54,25 @@ const Page = () => {
             <Col>
               <Select defaultValue="all" style={{ width: 120 }}>
                 <Option value="all">All</Option>
-                <Option value="Yiminghe">yiminghe</Option>
+                <Option value="forum">Forum</Option>
+                <Option value="mentor">Mentor</Option>
               </Select>
             </Col>
           </Row>
           <Card>
             <div style={{ fontSize: "20px" }}>Latest Chat</div>
             <div>
-              <Row style={{ padding: "12px 10px 0 10px", backgroundColor: "#EAEAEA" }}>
+              <Row
+                style={{
+                  padding: "12px 10px 0 10px",
+                  backgroundColor: "#EAEAEA",
+                }}
+              >
                 <Col style={{ padding: "0 5px 0 0" }}>
-                  <Avatar icon={<UserOutlined />} size={64} />
+                  <Avatar
+                    src={`${process.env.PUBLIC_URL}/assets/contoh.png`}
+                    size={64}
+                  />
                 </Col>
                 <Col>
                   <div className="text-bold" style={{ fontSize: "20px" }}>
@@ -109,14 +118,17 @@ const Page = () => {
         <Col span={10}>
           {" "}
           <Card style={{ textAlign: "center" }}>
-            <img src={`${process.env.PUBLIC_URL}/assets/chat.png`} style={{maxHeight: "75vh"}}/>
+            <img
+              src={`${process.env.PUBLIC_URL}/assets/chat.png`}
+              style={{ maxHeight: "75vh" }}
+            />
           </Card>
         </Col>
         <Col span={8}>
           <div style={{ textAlign: "center" }}>
             <Image
               width={200}
-              src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+              src={`${process.env.PUBLIC_URL}/assets/contoh-2.png`}
               style={{ borderRadius: "100px" }}
             />
             <div className="text-bold" style={{ fontSize: "36px" }}>

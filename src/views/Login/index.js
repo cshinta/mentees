@@ -52,7 +52,7 @@ const Page = () => {
         }}
       >
         <Col>
-          <img src={`${process.env.PUBLIC_URL}/assets/Logo.png`} alt="logo" />
+          <img src={`${process.env.PUBLIC_URL}/assets/logo.png`} alt="logo" />
         </Col>
       </Row>
       <Row

@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, {useState} from "react";
 import { Layout, Row, Col, Card, Menu, Badge, Avatar, Dropdown } from "antd";
 import { BellOutlined, UserOutlined, DownOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
@@ -8,6 +8,7 @@ import "./Navbar.scss";
 const Navbar = () => {
   const { Header } = Layout;
   const { SubMenu } = Menu;
+  const [current, setCurrent] = useState("findMentor")
   const navigate = useNavigate();
 
   const menu = (
@@ -56,16 +57,15 @@ const Navbar = () => {
         </Col>
         <Col span={6}>
           <div>
-            <Menu selectedKeys={"findMentor"} mode="horizontal">
+            <Menu selectedKeys={[current]} mode="horizontal">
               <Menu.Item key="findMentor">
                 <span className="text-default"> Find Mentor</span>
               </Menu.Item>
-              <Menu.Item key="forum">
+              <Menu.Item key="forum" onClick={()=>navigate("/forum")}>
                 <span className="text-default"> Forum</span>
               </Menu.Item>
-              <Menu.Item key="chat">
+              <Menu.Item key="chat" onClick={()=>navigate("/chat")}>
                 <span className="text-default" style={{ paddingRight: "2px" }}>
-                  {" "}
                   Chat
                 </span>
                 <Badge dot={true}></Badge>
