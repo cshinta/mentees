@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Row, Col, Card, Button, Divider, Tag, Collapse, Avatar } from "antd";
-import { useNavigate } from "react-router-dom";
 import {
-  UndoOutlined,
-  MailOutlined,
-  DoubleRightOutlined,
+  CheckOutlined,
+  CloseOutlined,
   UserOutlined,
+  PaperClipOutlined,
 } from "@ant-design/icons";
 import MenteeLayout from "../../components/layout/index";
 import "./index.scss";
 
 const Page = () => {
   const { Panel } = Collapse;
+
   return (
     <MenteeLayout>
       <Row style={{ padding: "0 0 0 4vw" }} id="find-mentor">
@@ -72,15 +72,10 @@ const Page = () => {
                 </div>
                 <div style={{ padding: "10px 0" }}>
                   <div style={{ fontSize: "23px" }} className="text-bold">
-                    Achievements
+                    CV/Resume
                   </div>
                   <div style={{ padding: "0 10px", fontSize: "15px" }}>
-                    <div>
-                      1. 1st Mobile Development on Hology Competition 2021
-                    </div>
-                    <div>
-                      2. 1st Mobile Development on Hology Competition 2021
-                    </div>
+                    <a><PaperClipOutlined /> Link </a>
                   </div>
                 </div>
               </Col>
@@ -90,15 +85,14 @@ const Page = () => {
                 style={{ textAlign: "center", padding: "10px" }}
               >
                 <Button className="button-mentor">
-                  <UndoOutlined className="gradient-color" />
-                  <div>Back</div>
+                  <CloseOutlined className="gradient-color" />
+                  <div>Decline Request</div>
                 </Button>
-                <Button className="button-accept-mentor  btn-primary">
-                  <MailOutlined /> <div>Send Request</div>
-                </Button>
-                <Button className="button-mentor">
-                  <DoubleRightOutlined className="gradient-color" />{" "}
-                  <div>Next</div>
+                <Button className="btn-primary" style={{
+                  height: 100
+                }}>
+                  <CheckOutlined className="gradient-color" />{" "}
+                  <div>Accept Request</div>
                 </Button>
               </Col>
             </Row>
@@ -109,14 +103,14 @@ const Page = () => {
           <Card
             className="text-bold"
             style={{
-              backgroundColor: "#E45858",
+              backgroundColor: "#6246EA",
               borderRadius: "10px",
               color: "#fff",
               textAlign: "right",
             }}
           >
             <span style={{ fontSize: "50px", paddingRight: "10px" }}>
-              Mentor
+              Mentee
             </span>
             <span style={{ fontSize: "32px" }}>List</span>
           </Card>
