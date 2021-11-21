@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Row, Col, Button, Card, Avatar, Divider, Tag } from "antd";
 import { AntDesignOutlined } from "@ant-design/icons";
-import { useNavigate } from "react-router-dom";
 
-const Page = (props) => {
+const Page = ({ onNext, onBack, form }) => {
   return (
     <div id="mentor-registration-4" style={{ padding: "5vh 8vw" }}>
       <Card className="card-personal-mentor">
@@ -16,56 +15,52 @@ const Page = (props) => {
           <div style={{ textAlign: "left", padding: "3vh 0" }}>
             <Row justify="space-between">
               <Col offset={2} span={6}>
-                <div className="text-secondary text-bold">Full Name</div>
-                <div className="text-secondary">Brody</div>
+                <div className="text-secondary text-bold">First Name</div>
+                <div className="text-secondary">{form.first_name}</div>
               </Col>
               <Col span={6}>
                 <div className="text-secondary text-bold">Last Name</div>
-                <div className="text-secondary">Gans</div>
+                <div className="text-secondary">{form.first_name}</div>
               </Col>
               <Divider />
               <Col offset={2} span={6}>
                 <div className="text-secondary text-bold">Date of Birth</div>
-                <div className="text-secondary">13/05/1997</div>
+                <div className="text-secondary">{form.birth_date}</div>
               </Col>
               <Col span={6}>
                 <div className="text-secondary text-bold">Gender</div>
-                <div className="text-secondary">Male</div>
+                <div className="text-secondary">{form.gender}</div>
               </Col>
               <Divider />
               <Col offset={2} span={12}>
                 <div className="text-secondary text-bold">Nationality</div>
-                <div className="text-secondary">Germany</div>
+                <div className="text-secondary">{form.nationality}</div>
               </Col>
               <Divider />
               <Col offset={2} span={12}>
                 <div className="text-secondary text-bold">
                   Current Level of Study
                 </div>
-                <div className="text-secondary">Master Degree</div>
+                <div className="text-secondary">{form.current_study}</div>
               </Col>
               <Divider />
               <Col offset={2} span={12}>
                 <div className="text-secondary text-bold">
                   School/University/Company
                 </div>
-                <div className="text-secondary">PT. Sanjaya Putra</div>
+                <div className="text-secondary">{form.university}</div>
               </Col>
               <Divider />
               <Col offset={2} span={12}>
                 <div className="text-secondary text-bold">
                   Major/Job Position
                 </div>
-                <div className="text-secondary">
-                  Head Officer of Technical Division
-                </div>
+                <div className="text-secondary">{form.major}</div>
               </Col>
               <Divider />
               <Col offset={2} span={12}>
                 <div className="text-secondary text-bold">Bio</div>
-                <div className="text-secondary">
-                  Avalaible on 9.00 am until 4.00 pm{" "}
-                </div>
+                <div className="text-secondary">{form.bio}</div>
               </Col>
               <Divider />
             </Row>
@@ -73,47 +68,37 @@ const Page = (props) => {
         </div>
       </Card>
       <Card className="card-personal-mentor" style={{ margin: "20px 0" }}>
-        <div style={{ fontSize: "30px" }}> Expertises Information </div>
+        <div style={{ fontSize: "30px" }}> Interests Information </div>
         <div style={{ textAlign: "center", padding: "3vh 3vw" }}>
           <div style={{ textAlign: "left", padding: "3vh 0" }}>
             <Row justify="space-between">
               <Col offset={2} span={12}>
                 <div className="text-secondary text-bold">
-                  Area of Expertise
+                  Area of Interests
                 </div>
-                <Tag>
-                  <div>Web Development</div>
-                </Tag>
-                <Tag>
-                  <div>Mobile App Development</div>
-                </Tag>
+                {form?.interest.split("|").map((e) => (
+                  <Tag>{e}</Tag>
+                ))}
               </Col>
               <Divider />
               <Col offset={2} span={12}>
                 <div className="text-secondary text-bold">Skills</div>
-                <Tag>
-                  <div>Python</div>
-                </Tag>
-                <Tag>
-                  <div>React.js</div>
-                </Tag>
+                {form?.skill.split("|").map((e) => (
+                  <Tag>{e}</Tag>
+                ))}
               </Col>
               <Divider />
               <Col offset={2} span={12}>
                 <div className="text-secondary text-bold">Achievements</div>
-                <div className="text-secondary">
-                  Head Officer of Technical Division
-                </div>
-              </Col>
-              <Divider />
-              <Col offset={2} span={12}>
-                <div className="text-secondary text-bold">Bio</div>
-                <div style={{ paddingLeft: "20px", fontSize: "18px" }}>
-                  1. 1st Mobile Development on Hology Competition 2021
-                </div>
-                <div style={{ paddingLeft: "20px", fontSize: "18px" }}>
-                  2. 1st Mobile Development on Hology Competition 2021
-                </div>
+                <ol>
+                  {form?.achievement.split("|").map((e) => (
+                    <li
+                      style={{ paddingLeft: "20px", fontSize: "18px" }}
+                    >
+                      {e}
+                    </li>
+                  ))}
+                </ol>
               </Col>
               <Divider />
             </Row>
@@ -127,12 +112,12 @@ const Page = (props) => {
             <Row justify="space-between">
               <Col offset={2} span={12}>
                 <div className="text-secondary text-bold">Email</div>
-                <div className="text-secondary">brody_bro6543@ymail.com</div>
+                <div className="text-secondary">{form.email}</div>
               </Col>
               <Divider />
               <Col offset={2} span={12}>
                 <div className="text-secondary text-bold">Username</div>
-                <div className="text-secondary">brodybr</div>
+                <div className="text-secondary">{form.username}</div>
               </Col>
             </Row>
           </div>
@@ -140,12 +125,12 @@ const Page = (props) => {
       </Card>
       <Row justify="space-between">
         <Col offset={6} span={6}>
-          <Button size="large" onClick={props.onBack}>
+          <Button size="large" onClick={onBack}>
             <span>Back</span>
           </Button>
         </Col>
         <Col span={6}>
-          <Button size="large" className="btn-primary" onClick={props.onRegister}>
+          <Button size="large" className="btn-primary" onClick={onNext}>
             <span>Register</span>
           </Button>
         </Col>

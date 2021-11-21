@@ -1,10 +1,40 @@
 /* eslint-disable no-console */
-import React, { useState, useEffect } from "react";
-import { Row, Col, Form, Button, Input } from "antd";
+import React, { useState } from "react";
+import { Row, Col, Form, Button, Input, message } from "antd";
 import { useNavigate } from "react-router-dom";
+import api from "../../api";
 
 const Page = () => {
-  const history = useNavigate();
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
+  const handleOnFinish = async (values) => {
+    setLoading(true);
+    try {
+      const { status, data } = await api.post("/auth/login", values);
+
+      if (status === 200) {
+        const response = data.data;
+
+        localStorage.setItem("token", response.token);
+        localStorage.setItem("username", response.user.username);
+
+        if (response.user.role === "Mentee") {
+          navigate("/mentee/find-mentor");
+        } else {
+          navigate("/mentor/mentee-request");
+        }
+      } else {
+        message.error("Something wrong happened");
+        console.log(data.errorStack);
+      }
+    } catch (error) {
+      message.error("Something wrong happened");
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <section
@@ -43,7 +73,11 @@ const Page = () => {
             <span className="text-bold">Explore further</span> by joining us!
           </div>
           <div style={{ padding: "3vh 0 0 0", textAlign: "center" }}>
-            <Form layout="vertical" wrapperCol={{ span: 16 }}>
+            <Form
+              layout="vertical"
+              wrapperCol={{ span: 16 }}
+              onFinish={handleOnFinish}
+            >
               <Form.Item
                 label={
                   <span className="text-bold" style={{ fontSize: "25px" }}>
@@ -78,6 +112,8 @@ const Page = () => {
                   size="large"
                   className="btn-primary"
                   style={{ width: "100%" }}
+                  htmlType="submit"
+                  loading={loading}
                 >
                   <span style={{ textAlign: "center", width: "100%" }}>
                     Submit
@@ -85,7 +121,14 @@ const Page = () => {
                 </Button>
                 <br />
                 <span className="text-secondary">
-                  Don't have an account yet? Register
+                  Don't have an account yet?{" "}
+                  <span
+                    onClick={() => {
+                      navigate("/register");
+                    }}
+                  >
+                    Register
+                  </span>
                 </span>
               </Form.Item>
             </Form>

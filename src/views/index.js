@@ -1,10 +1,10 @@
 /* eslint-disable no-console */
-import React, { useState, useEffect } from "react";
-import { Row, Col, Menu, Dropdown, Button, Layout } from "antd";
+import React from "react";
+import { Row, Col, Button } from "antd";
 import { useNavigate } from "react-router-dom";
 
 const Page = () => {
-  const history = useNavigate();
+  const navigate = useNavigate();
 
   return (
     <section
@@ -34,7 +34,7 @@ const Page = () => {
               <Button
                 size="large"
                 onClick={() => {
-                  history.push("/");
+                  navigate("/login");
                 }}
               >
                 <span className="text-bold">Login</span>
@@ -44,7 +44,7 @@ const Page = () => {
               <Button
                 size="large"
                 onClick={() => {
-                  history.push("/");
+                  navigate("/register");
                 }}
                 className="btn-primary"
               >
@@ -82,7 +82,7 @@ const Page = () => {
                   alignItems: "center",
                 }}
                 onClick={() => {
-                  history.push("/");
+                  navigate("/login");
                 }}
                 className="btn-primary"
               >
@@ -97,7 +97,7 @@ const Page = () => {
                   alignItems: "center",
                 }}
                 onClick={() => {
-                  history.push("/");
+                  navigate("/login");
                 }}
               >
                 <span className="text-bold">Ask Publicly</span>

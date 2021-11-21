@@ -1,31 +1,80 @@
-import React, { useState, useEffect } from "react";
-import { Row, Col, Form, Button, Input, Select, Upload } from "antd";
+import React, { useState } from "react";
+import { Row, Col, Form, Button, Upload } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
-import { useNavigate } from "react-router-dom";
+import { WithContext as ReactTags } from "react-tag-input";
 
-const Page = (props) => {
+const Page = ({ onNext, onBack, setForm, form }) => {
+  const [interestTags, setInterestTags] = useState([]);
+  const [skillTags, setSkillTags] = useState([]);
+
+  const handleInterestDelete = (i) => {
+    setInterestTags(interestTags.filter((_, index) => index !== i));
+  };
+
+  const handleInterestAddition = (tag) => {
+    setInterestTags([...interestTags, tag]);
+  };
+
+  const handleInterestDrag = (tag, currPos, newPos) => {
+    const temp = [...interestTags];
+
+    temp.splice(currPos, 1);
+    temp.splice(newPos, 0, tag);
+
+    setInterestTags({ temp });
+  };
+
+  const handleSkillDelete = (i) => {
+    setSkillTags(skillTags.filter((_, index) => index !== i));
+  };
+
+  const handleSkillAddition = (tag) => {
+    setSkillTags([...skillTags, tag]);
+  };
+
+  const handleSkillDrag = (tag, currPos, newPos) => {
+    const temp = [...skillTags];
+
+    temp.splice(currPos, 1);
+    temp.splice(newPos, 0, tag);
+
+    setSkillTags({ temp });
+  };
+
+  const handleFinish = (values) => {
+    console.log(values);
+    setForm((form) => ({
+      ...form,
+      interest: interestTags.map((e) => e.text).join("|"),
+      skill: skillTags.map((e) => e.text).join("|"),
+    }));
+
+    onNext()
+  };
+
   return (
     <div id="mentor-registration-2" style={{ padding: "5vh 8vw" }}>
-      <Form layout="vertical" wrapperCol={{ span: 24 }}>
+      <Form layout="vertical" wrapperCol={{ span: 24 }} onFinish={handleFinish} initialValues={form}>
         <Form.Item
-          name="expertise"
+          name="interest"
           label={
             <span className="text-bold text-secondary">Area of Interests</span>
           }
           rules={[{ required: true, message: "Please enter your interests!" }]}
         >
-          <Select
-            placeholder="Enter your interests"
-            allowClear
-            size="large"
-            mode="multiple"
-          >
-            <Select.Option value="indonesia">Indonesia</Select.Option>
-            <Select.Option value="other">Not Indonesia</Select.Option>
-          </Select>
+          <div>
+            <ReactTags
+              inline
+              placeholder="Enter your interest"
+              tags={interestTags}
+              handleDelete={handleInterestDelete}
+              handleAddition={handleInterestAddition}
+              handleDrag={handleInterestDrag}
+            />
+          </div>
         </Form.Item>
         <Form.Item
-          name="skills"
+          name="skill"
           label={<span className="text-bold text-secondary">Skills</span>}
           rules={[
             {
@@ -34,15 +83,16 @@ const Page = (props) => {
             },
           ]}
         >
-          <Select
-            placeholder="Enter your skills"
-            allowClear
-            size="large"
-            mode="multiple"
-          >
-            <Select.Option value="college">College</Select.Option>
-            <Select.Option value="sma">High School</Select.Option>
-          </Select>
+          <div>
+            <ReactTags
+              inline
+              placeholder="Enter your skill"
+              tags={skillTags}
+              handleDelete={handleSkillDelete}
+              handleAddition={handleSkillAddition}
+              handleDrag={handleSkillDrag}
+            />
+          </div>
         </Form.Item>
         <Form.Item
           name="resume"
@@ -59,24 +109,19 @@ const Page = (props) => {
             <Button icon={<UploadOutlined />}>Click to upload</Button>
           </Upload>
         </Form.Item>
-        <Row justify="center">
-          <Col offset={6} span={6}>
-            <Button size="large" onClick={props.onBack}>
+        <Row justify="center" gutter={[80, 80]}>
+          <Col>
+            <Button size="large" onClick={onBack}>
               <span>Back</span>
             </Button>
           </Col>
-          <Col span={6}>
+          <Col>
             <Form.Item
               wrapperCol={{
                 span: 12,
               }}
             >
-              <Button
-                size="large"
-                className="btn-primary"
-                htmlType="submit"
-                onClick={props.onNext}
-              >
+              <Button size="large" className="btn-primary" htmlType="submit">
                 <span>Next</span>
               </Button>
             </Form.Item>

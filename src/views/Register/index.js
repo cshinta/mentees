@@ -1,9 +1,10 @@
 /* eslint-disable no-console */
-import React, { useState, useEffect } from "react";
-import { Row, Col, Form, Button, Input } from "antd";
+import React from "react";
+import { Row, Col, Button } from "antd";
 import { useNavigate } from "react-router-dom";
 
 const Page = () => {
+  const navigate = useNavigate();
 
   return (
     <section
@@ -25,26 +26,38 @@ const Page = () => {
           </div>
           <div className="text-header">as a:</div>
           <Row justify="center" align="middle" style={{ padding: "2vh 0" }}>
-            <Col offset={2} span={4} style={{ textAlign: "center" }}>
+            <Col span={4} style={{ textAlign: "center" }}>
               <Button
-                size="large"
-                style={{
-                  display: "flex",
-                  alignItems: "center",
+                onClick={() => {
+                  navigate("/register/mentor");
                 }}
+                size="large"
               >
-                <span className="text-bold">Mentor</span>
+                <span
+                  className="text-bold"
+                  style={{
+                    textAlign: "center",
+                  }}
+                >
+                  Mentor
+                </span>
               </Button>
             </Col>
             <Col span={4}>
               <Button
-                size="large"
-                style={{
-                  display: "flex",
-                  alignItems: "center",
+                onClick={() => {
+                  navigate("/register/mentee");
                 }}
+                size="large"
               >
-                <span className="text-bold">Mentee</span>
+                <span
+                  className="text-bold"
+                  style={{
+                    textAlign: "center",
+                  }}
+                >
+                  Mentee
+                </span>
               </Button>
             </Col>
           </Row>

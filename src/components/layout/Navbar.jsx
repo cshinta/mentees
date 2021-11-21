@@ -2,16 +2,26 @@
 import React from "react";
 import { Layout, Row, Col, Card, Menu, Badge, Avatar, Dropdown } from "antd";
 import { BellOutlined, UserOutlined, DownOutlined } from "@ant-design/icons";
+import { useNavigate } from "react-router-dom";
 import "./Navbar.scss";
 
 const Navbar = () => {
   const { Header } = Layout;
   const { SubMenu } = Menu;
+  const navigate = useNavigate();
 
   const menu = (
     <Menu>
-      <Menu.Item key="1">Clicking me will not close the menu.</Menu.Item>
-      <Menu.Item key="2">Clicking me will not close the menu also.</Menu.Item>
+      <Menu.Item key="2">Profile</Menu.Item>
+      <Menu.Item
+        key="1"
+        onClick={() => {
+          localStorage.clear();
+          navigate("/");
+        }}
+      >
+        Sign Out
+      </Menu.Item>
     </Menu>
   );
 
@@ -87,7 +97,7 @@ const Navbar = () => {
                 <Avatar icon={<UserOutlined />} />
               </Col>
               <Col>
-              <span style={{ fontSize: "20px" }}> miuwmia </span>
+                <span style={{ fontSize: "20px" }}> miuwmia </span>
                 <Dropdown overlay={menu}>
                   <DownOutlined />
                 </Dropdown>
