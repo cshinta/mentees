@@ -1,21 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { Row, Col, Button, Card, Avatar, Divider, Tag, Upload } from "antd";
+import React from "react";
+import { Row, Col, Button, Card, Avatar, Divider, Tag } from "antd";
 import { AntDesignOutlined } from "@ant-design/icons";
 
 const Page = ({ onNext, onBack, form }) => {
-  const fileList = [
-    {
-      uid: "-1",
-      name: "xxx.png",
-      status: "done",
-      url: "http://www.baidu.com/xxx.png",
-    },
-  ];
-
-  const uploadPreview = {
-    multiple: true,
-  };
-
   return (
     <div id="mentor-registration-4" style={{ padding: "5vh 8vw" }}>
       <Card className="card-personal-mentor">

@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
-import React, { useState, useEffect } from "react";
-import { Row, Col, Form, Button, Input } from "antd";
+import React from "react";
+import { Row, Col, Button } from "antd";
 import { useNavigate } from "react-router-dom";
 
 const Page = () => {

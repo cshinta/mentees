@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Row, Col, Form, Button, Input, Select, Upload } from "antd";
+import React, { useState } from "react";
+import { Row, Col, Form, Button, Input } from "antd";
 import { PlusOutlined, MinusCircleOutlined } from "@ant-design/icons";
 import { WithContext as ReactTags } from "react-tag-input";
 

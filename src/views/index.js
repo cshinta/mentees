@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
-import React, { useState, useEffect } from "react";
-import { Row, Col, Menu, Dropdown, Button, Layout } from "antd";
+import React from "react";
+import { Row, Col, Button } from "antd";
 import { useNavigate } from "react-router-dom";
 
 const Page = () => {
@@ -34,7 +34,7 @@ const Page = () => {
               <Button
                 size="large"
                 onClick={() => {
-                  navigate("/login")
+                  navigate("/login");
                 }}
               >
                 <span className="text-bold">Login</span>
@@ -44,7 +44,7 @@ const Page = () => {
               <Button
                 size="large"
                 onClick={() => {
-                  navigate("/register")
+                  navigate("/register");
                 }}
                 className="btn-primary"
               >
@@ -82,7 +82,7 @@ const Page = () => {
                   alignItems: "center",
                 }}
                 onClick={() => {
-                  navigate("/login")
+                  navigate("/login");
                 }}
                 className="btn-primary"
               >
@@ -97,7 +97,7 @@ const Page = () => {
                   alignItems: "center",
                 }}
                 onClick={() => {
-                  navigate("/login")
+                  navigate("/login");
                 }}
               >
                 <span className="text-bold">Ask Publicly</span>

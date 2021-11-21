@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, Form, Button, Input, Select } from "antd";
+import { Row, Col, Form, Button, Input } from "antd";
 
 const Page = ({ onNext, onBack, setForm, form }) => {
   const handleFinish = (values) => {

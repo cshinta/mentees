@@ -13,7 +13,7 @@ const Page = () => {
     try {
       const { status, data } = await api.post("/auth/login", values);
 
-      if (status == 200) {
+      if (status === 200) {
         const response = data.data;
 
         localStorage.setItem("token", response.token);
