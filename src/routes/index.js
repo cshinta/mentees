@@ -7,6 +7,7 @@ import MentorRegister from "../views/Register/mentor/index.js";
 import MenteeRegister from "../views/Register/mentee/index.js";
 import FindMentor from "../views/FindMentor";
 import Forum from "../views/Forum";
+import Chat from "../views/chat";
 
 const Router = () => {
     return (
@@ -18,6 +19,7 @@ const Router = () => {
         <Route path="/register/mentee" element={<MenteeRegister/>} />
         <Route path="/mentee/find-mentor" element={<FindMentor/>} />
         <Route path="/forum" element={<Forum/>} />
+        <Route path="/chat" element={<Chat/>} />
       </Routes>
     );
   };
