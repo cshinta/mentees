@@ -1,0 +1,66 @@
+@import "~antd/dist/antd.css";
+@import "./Constant.scss";
+@import url("https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap");
+
+body {
+  margin: 0px;
+  padding: 0px;
+  font-family: $mainFont;
+}
+
+.text-header {
+  white-space: normal;
+  font-size: $headerFontSize;
+  font-weight: 700;
+}
+
+.text-default {
+  white-space: normal;
+  font-size: $defaultFontSize;
+  font-weight: 400;
+}
+
+.text-secondary {
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-bold {
+  font-weight: 700;
+}
+
+.text-normal {
+  font-weight: 400;
+}
+
+@mixin gradient($direction, $list) {
+  background: -webkit-linear-gradient($direction, $list);
+  background: -moz-linear-gradient($direction, $list);
+  background: -o-linear-gradient($direction, $list);
+  background: linear-gradient($direction, $list);
+}
+
+$list1: $buttonBlue, $buttonRed;
+
+.ant-btn {
+  font-size: $buttonFontSize;
+  border-radius: 10px;
+  padding: 25px 20px !important;
+  border: 1px solid $buttonBlue;
+  display: flex;
+  align-items: center;
+  text-align: center !important;
+  font-weight: 400;
+}
+
+.btn-primary {
+  @include gradient(to left, $list1);
+  color: #fff;
+  border-color: #fff;
+  text-decoration: none;
+  font-weight: 400;
+}

@@ -1,0 +1,41 @@
+#registration {
+  .card-regis {
+    min-height: 90vh;
+    min-width: 70vw;
+    border-color: black;
+    border-radius: 10px;
+  }
+
+  .ant-steps-navigation .ant-steps-item::before {
+    background-color: #6246ea;
+    height: 5px;
+  }
+
+  .ant-steps-item-process > .ant-steps-item-container > .ant-steps-item-icon {
+    background: #6246ea;
+  }
+
+  .ant-steps-item-process .ant-steps-item-icon {
+    border-color: #6246ea;
+  }
+
+  .react-datepicker__input-container {
+    width: inherit;
+  }
+
+  .react-datepicker-wrapper {
+    width: 100%;
+  }
+
+  .customDatePicker,
+  .customDatePicker > div.react-datepicker-wrapper,
+  .customDatePicker
+    > div
+    > div.react-datepicker__input-container
+    .customDatePicker
+    > div
+    > div.react-datepicker__input-container
+    input {
+    width: 100%;
+  }
+}
